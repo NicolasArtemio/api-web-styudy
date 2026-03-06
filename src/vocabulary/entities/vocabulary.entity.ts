@@ -1,6 +1,12 @@
 import { Category } from "src/common/enums/enums.category";
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+export enum Difficulty {
+  EASY = 'easy',
+  MEDIUM = 'medium',
+  HARD = 'hard',
+}
+
 @Entity()
 export class Vocabulary {
     @PrimaryGeneratedColumn()
@@ -21,6 +27,16 @@ export class Vocabulary {
         nullable: true,
     })
     category?: Category;
+
+    @Column('text', { nullable: true })
+    audioRecording: string;
+
+    @Column({
+        type: 'enum',
+        enum: Difficulty,
+        nullable: true,
+    })
+    difficulty?: Difficulty;
 
 
     @CreateDateColumn()

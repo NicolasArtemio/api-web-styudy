@@ -8,10 +8,15 @@ export class CreateMistakeDto {
     @IsString()
     description: string;
 
+    @IsOptional()
     @IsString()
-    correction: string;
+    correction?: string;
 
     @IsOptional()
     @IsEnum(Category)
     category?: Category;
+
+    @IsOptional()
+    @IsString()
+    audioRecording?: string;
 }

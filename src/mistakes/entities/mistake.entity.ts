@@ -22,6 +22,9 @@ export class Mistake {
     })
     category?: Category;
 
+    @Column('text', { nullable: true })
+    audioRecording: string;
+
 
     @CreateDateColumn()
     date: Date;
