@@ -13,19 +13,23 @@ import { PracticeSession } from './practice-sessions/entities/practice-session.e
 import { SeedService } from './seed/seed.service';
 
 
+import { StatsModule } from './stats/stats.module';
+import { AuthModule } from './auth/auth.module';
+import { User } from './auth/entities/user.entity';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: 'localhost',
-    port: 3306,
-    username: 'root',
-    password: 'admin',
-    database: 'estudiar_inglesdb',
-    autoLoadEntities: true,
-    synchronize: true,
-  }),
-    TypeOrmModule.forFeature([PhraseCategory, Phrase, PracticeSession]),
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'admin',
+      database: 'estudiar_inglesdb',
+      autoLoadEntities: true,
+      synchronize: true,
+    }),
+    TypeOrmModule.forFeature([PhraseCategory, Phrase, PracticeSession, User]),
     LogsModule,
     VocabularyModule,
     MistakesModule,
@@ -33,6 +37,8 @@ import { SeedService } from './seed/seed.service';
     PhraseCategoriesModule,
     PhrasesModule,
     PracticeSessionsModule,
+    StatsModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [SeedService],
